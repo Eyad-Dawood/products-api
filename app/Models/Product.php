@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+class Product extends Model
+{
+    /** @use HasFactory<\Database\Factories\ProductFactory> */
+    use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'description',
+        'price',
+        'category_id',
+        'is_available',
+    ];
+
+    protected $casts = [
+        'is_available' => 'boolean',
+        'price' => 'decimal:2',
+    ];
+
+    /** @return BelongsTo<Category> */
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+}
