@@ -29,6 +29,7 @@ return new class extends Migration
             $table->index('price');
             $table->index('is_available');
             $table->index('created_at');
+            $table->index('category_id','price');
 
             $table->fullText(['name', 'description']);
         });
