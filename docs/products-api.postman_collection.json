@@ -1,0 +1,276 @@
+{
+  "info": {
+    "name": "products-api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "id": "1d30b417-b552-4e6d-93d8-eff0ab7786a3",
+      "name": "Auth",
+      "item": [
+        {
+          "id": "19ad957d-95aa-4d50-8252-bea8b03910d7",
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"admin@admin.com\",\"password\":\"password\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "3095b75b-c960-4e59-85c0-9c13ed057341",
+          "name": "logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json"
+              },
+              {
+                "key": "authorization",
+                "value": "bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/auth/logout",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "logout"
+              ]
+            }
+          }
+        },
+        {
+          "id": "96aaacd5-3ba8-4bc7-a68c-e3a619f213bd",
+          "name": "me",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json"
+              },
+              {
+                "key": "authorization",
+                "value": "bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/auth/me",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "me"
+              ]
+            }
+          }
+        },
+        {
+          "id": "5d6cce29-3cee-46cc-847d-d12fc23fd169",
+          "name": "refresh",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": "application/json"
+              },
+              {
+                "key": "authorization",
+                "value": "bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/auth/refresh",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "refresh"
+              ]
+            }
+          }
+        },
+        {
+          "id": "ef0ec7b9-e726-4e15-b16e-92cc991e77d1",
+          "name": "register admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": " application/json"
+              },
+              {
+                "key": "authorization",
+                "value": "bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/auth/register/admin",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register",
+                "admin"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"eyad\",\"email\":\"eyad3@gmail.com\",\"password\":\"123456\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "8496b1a9-bc17-4bd4-ab88-2ba7cef67142",
+          "name": "register customer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "accept",
+                "value": " application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/auth/register/customer",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "auth",
+                "register",
+                "customer"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"eyad\",\"email\":\"eyad3@gmail.com\",\"password\":\"123456\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "b60ffbed-5836-443e-8dd4-2644ebe128be",
+      "name": "search proudct",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json"
+          },
+          {
+            "key": "authorization",
+            "value": "bearer {{access_token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/products/search?q=Phone&per_page=50",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "products",
+            "search"
+          ],
+          "query": [
+            {
+              "key": "q",
+              "value": "Phone"
+            },
+            {
+              "key": "min_price",
+              "value": "0",
+              "disabled": true
+            },
+            {
+              "key": "max_price",
+              "value": "1000",
+              "disabled": true
+            },
+            {
+              "key": "category_id",
+              "value": "19",
+              "disabled": true
+            },
+            {
+              "key": "is_available",
+              "value": "0",
+              "disabled": true
+            },
+            {
+              "key": "sort_by",
+              "value": "",
+              "disabled": true
+            },
+            {
+              "key": "sort_dir",
+              "value": "",
+              "disabled": true
+            },
+            {
+              "key": "per_page",
+              "value": "50"
+            },
+            {
+              "key": "page",
+              "value": "",
+              "disabled": true
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
