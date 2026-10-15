@@ -29,7 +29,7 @@ class ProductSearchController extends Controller
             {
                 $searchTerm = $request->query('q');
                 
-                $query->whereFullText(['name','description'],$searchTerm);
+                $query->whereFullText(['name', 'description'], $searchTerm, ['mode' => 'boolean']);
             }
 
         //price range filter 
