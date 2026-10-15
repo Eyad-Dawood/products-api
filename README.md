@@ -171,11 +171,7 @@ The tests use the `api` guard (`Auth::guard('api')`) and log in the default admi
 A custom Artisan command benchmarks the search endpoint under realistic load.
 
 ```bash
-php artisan performance:test \
-    --email=admin@admin.com \
-    --password=password \
-    --base-url=http://127.0.0.1:8000 \
-    --iterations=30
+php artisan performance:test --email=admin@admin.com --password=password --base-url=http://127.0.0.1:8000 --iterations=30
 ```
 
 The command outputs a table similar to the one below (real numbers):
