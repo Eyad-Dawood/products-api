@@ -159,7 +159,7 @@ The project ships with a comprehensive feature test suite covering:
 Run the tests with:
 
 ```bash
-php artisan test
+php artisan test --testsuite=Feature
 ```
 
 The tests use the `api` guard (`Auth::guard('api')`) and log in the default admin user before each request.
