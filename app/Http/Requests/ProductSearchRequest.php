@@ -33,4 +33,10 @@ class ProductSearchRequest extends FormRequest
             'per_page' => ['nullable', 'integer', 'min:1', 'max:50']
         ];
     }
+
+    public function cacheKey():string{
+       $params = $this->only(['q', 'min_price', 'max_price', 'category_id', 'is_available', 'sort_by', 'sort_dir', 'per_page', 'page']);
+
+       return 'product_search_' . md5(json_encode($params));
+    }
 }

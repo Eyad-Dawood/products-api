@@ -6,6 +6,8 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductSearchRequest;
 use App\Http\Resources\ProductResource;
+use Illuminate\Support\Facades\Cache;
+
 
 class ProductSearchController extends Controller
 {
@@ -14,6 +16,8 @@ class ProductSearchController extends Controller
      */
     public function index(ProductSearchRequest $request)
     {
+        $data = Cache::remember($request->cacheKey(), 600, function () use ($request) {
+        
         $query = Product::query()->select([
             'id',
             'name',
@@ -61,11 +65,17 @@ class ProductSearchController extends Controller
 
         $query->orderBy($sortBy,$sortDir);
 
+
         //pagination
         $perPage = $request->query('per_page',10);
-        $products = $query->simplePaginate($perPage);
 
-        return ProductResource::collection($products);
+        $paginator = $query->simplePaginate($perPage);
+
+        return ProductResource::collection($paginator)->response()->getData(true);
+        
+        });
+
+       return response()->json($data);
     }
     
 }

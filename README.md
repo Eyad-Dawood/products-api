@@ -1,3 +1,43 @@
+
+
+
+first small preife description for the project and features 
+then PostmanCollectionLink and a note (optional)
+with clear font (project has inline command to test performance instade of doing it mannualy , in instruction section 
+
+then add those numbers to hook the reader
+
+
+No rate limmiting for an easy test 
+
+final results (no cahce): 
++--------------------+---------+--------+--------+-----------+--------+--------+--------+
+| Scenario           | Success | Errors | Avg ms | Median ms | Min ms | P95 ms | Max ms |
++--------------------+---------+--------+--------+-----------+--------+--------+--------+
+| Category + price   | 200     | 0      | 104.41 | 99.6      | 78.57  | 130.13 | 204.47 |
+| Available products | 200     | 0      | 104.82 | 99.19     | 78.9   | 138.04 | 218.37 |
+| Price range        | 200     | 0      | 114.95 | 105.48    | 72.72  | 191.09 | 350.18 |
+| Combined filters   | 200     | 0      | 125.25 | 112.56    | 69.31  | 206.67 | 403.01 |
++--------------------+---------+--------+--------+-----------+--------+--------+--------+
+
+after adding cache (repeated operations) :
+
+ +--------------------+---------+--------+--------+-----------+--------+--------+--------+
+| Scenario           | Success | Errors | Avg ms | Median ms | Min ms | P95 ms | Max ms |
++--------------------+---------+--------+--------+-----------+--------+--------+--------+
+| Category + price   | 200     | 0      | 51.56  | 46.1      | 35.7   | 73.69  | 184.03 |
+| Available products | 200     | 0      | 54.92  | 48.75     | 36.45  | 71.76  | 216.26 |
+| Price range        | 200     | 0      | 62.95  | 50.98     | 37.19  | 181.22 | 208.84 |
+| Combined filters   | 200     | 0      | 58.52  | 50.86     | 38.74  | 76.77  | 293.13 |
++--------------------+---------+--------+--------+-----------+--------+--------+--------+
+
+
+
+
+then add the steps 
+and notes 
+
+
 phpadmin must be running when using aritsan:test becuase it uses mysql to use full text search
 
 no rate limiting so performance tests could be run with no issues
@@ -25,7 +65,12 @@ server must be running
 when using the
 php artisan performance:test --email=admin@admin.com --password=password --base-url=http://localhost:8000
 
+
+then add the journy to improve performance 
+
 journy :
+
+
 
 started :
 +--------------------+---------+--------+--------+-----------+--------+--------+---------+
@@ -109,6 +154,8 @@ final result :
 
 
 after using simple pagination : 
+
+final results (no cahce): 
 +--------------------+---------+--------+--------+-----------+--------+--------+--------+
 | Scenario           | Success | Errors | Avg ms | Median ms | Min ms | P95 ms | Max ms |
 +--------------------+---------+--------+--------+-----------+--------+--------+--------+
@@ -118,3 +165,13 @@ after using simple pagination :
 | Combined filters   | 200     | 0      | 125.25 | 112.56    | 69.31  | 206.67 | 403.01 |
 +--------------------+---------+--------+--------+-----------+--------+--------+--------+
 
+after adding cache (repeated operations) :
+
+ +--------------------+---------+--------+--------+-----------+--------+--------+--------+
+| Scenario           | Success | Errors | Avg ms | Median ms | Min ms | P95 ms | Max ms |
++--------------------+---------+--------+--------+-----------+--------+--------+--------+
+| Category + price   | 200     | 0      | 51.56  | 46.1      | 35.7   | 73.69  | 184.03 |
+| Available products | 200     | 0      | 54.92  | 48.75     | 36.45  | 71.76  | 216.26 |
+| Price range        | 200     | 0      | 62.95  | 50.98     | 37.19  | 181.22 | 208.84 |
+| Combined filters   | 200     | 0      | 58.52  | 50.86     | 38.74  | 76.77  | 293.13 |
++--------------------+---------+--------+--------+-----------+--------+--------+--------+
