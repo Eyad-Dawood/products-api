@@ -63,7 +63,9 @@ class ProductSearchController extends Controller
         $sortBy = $request->query('sort_by','created_at');
         $sortDir = $request->query('sort_dir','desc');
 
-        $query->orderBy($sortBy,$sortDir);
+        $query->
+        orderBy($sortBy,$sortDir)
+        ->orderBy('id','asc'); // fall back when values are equal
 
 
         //pagination

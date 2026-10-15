@@ -36,6 +36,7 @@ after adding cache (repeated operations) :
 
 then add the steps 
 and notes 
+(in good place) ' empty search request will return last added prodeucts (order by created at , desc)
 
 
 phpadmin must be running when using aritsan:test becuase it uses mysql to use full text search
