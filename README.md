@@ -197,7 +197,7 @@ The command outputs a table similar to the one below (real numbers):
 
 ## Postman Collection
 
-A ready‑to‑import Postman collection is available for manual API exploration. Download it from the repository's `docs/` folder or use the [link](https://github.com/Eyad-Dawood/products-api/docs/products-api.postman_collection.json).
+A ready‑to‑import Postman collection is available for manual API exploration. Download it from the repository's `docs/` folder or use the [link]([https://github.com/Eyad-Dawood/products-api/docs/products-api.postman_collection.json](https://github.com/Eyad-Dawood/products-api/blob/main/docs/products-api.postman_collection.json)).
 
 ---
 
