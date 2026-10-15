@@ -59,6 +59,9 @@ copy .env.example .env
 
 # 4. Generate Secrete Key
 php artisan key:generate
+
+# 5. Generate jwt Key
+php artisan jwt:secret
 ```
 
 ### Requirements
