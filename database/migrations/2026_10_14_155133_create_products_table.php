@@ -25,12 +25,14 @@ return new class extends Migration
             $table->boolean('is_available')->default(true);
             $table->timestamps();
             
-            $table->index('category_id');
             $table->index('price');
-            $table->index('is_available');
             $table->index('created_at');
-            $table->index('category_id','price');
-
+            
+            $table->index(['category_id', 'price'], 'idx_cat_price');
+            $table->index(['category_id', 'is_available', 'price'], 'idx_cat_avail_price');
+            $table->index(['category_id', 'is_available', 'created_at'], 'idx_cat_avail_created');
+            $table->index(['is_available', 'created_at'], 'idx_avail_created');
+            
             $table->fullText(['name', 'description']);
         });
     }

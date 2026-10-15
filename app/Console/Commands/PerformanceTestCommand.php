@@ -69,23 +69,23 @@ class PerformanceTestCommand extends Command
 
         // 2. Define search scenarios.
         $scenarios = [
-            'Category + price' => [
-                'category_id' => 19,
-                'min_price' => 0,
-                'max_price' => 1000,
-            ],
-            'Available products' => [
-                'in_stock' => 1,
-            ],
-            'Price range' => [
-                'min_price' => 100,
-                'max_price' => 500,
-            ],
+             'Category + price' => [
+                 'category_id' => 19,
+                 'min_price' => 0,
+                 'max_price' => 1000,
+             ],
+             'Available products' => [
+                 'is_available' => 0,
+             ],
+             'Price range' => [
+                 'min_price' => 100,
+                 'max_price' => 500,
+             ],
             'Combined filters' => [
                 'category_id' => 19,
                 'min_price' => 0,
                 'max_price' => 1000,
-                'in_stock' => 1,
+                'is_available' => 1,
             ],
         ];
 

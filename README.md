@@ -2,9 +2,15 @@ phpadmin must be running when using aritsan:test becuase it uses mysql to use fu
 
 no rate limiting so performance tests could be run with no issues
 
-server must be running
+steps :
+1 open XAMPP open Mysql , Apache
+2- php artisan migrate:fresh --seed (takes time)
+3- php artisan serve
+4- php artisan performance:test --email=admin@admin.com --password=password --base-url=http://127.0.0.1:8000 --iterations=30
 
-composer run dev
+results can be affected from computer resources
+
+server must be running
 
 when using the
 php artisan performance:test --email=admin@admin.com --password=password --base-url=http://localhost:8000
@@ -43,3 +49,50 @@ after reviewing and polishing database
 +--------------------+---------+--------+--------+-----------+--------+--------+--------+
 
 now the only remaning issue is at Available products 268.75
+
+after fixing the in_stock to is_available typo
++--------------------+---------+--------+---------+-----------+---------+---------+---------+
+| Scenario | Success | Errors | Avg ms | Median ms | Min ms | P95 ms | Max ms |
++--------------------+---------+--------+---------+-----------+---------+---------+---------+
+| Category + price | 30 | 0 | 98.73 | 84.62 | 58.04 | 186.27 | 200.1 |
+| Available products | 30 | 0 | 105.19 | 105.53 | 78.23 | 127.43 | 166.63 |
+| Price range | 30 | 0 | 100.15 | 91.76 | 76.42 | 155.43 | 165.09 |
+| Combined filters | 30 | 0 | 1504.07 | 1500.13 | 1276.76 | 1632.97 | 1921.47 |
++--------------------+---------+--------+---------+-----------+---------+---------+---------+
+
+now the issue is in cobined filters
+
+after logging every query using
+`DB::listen(function ($q) {
+        Log::info($q->time . 'ms | ' . $q->sql, $q->bindings);
+        });
+       `
+
+        inside ServiceProvider boot()
+        temproraly
+
+and tracing excecution plan and slow queries , then modefing the indexes
+final result
+
++--------------------+---------+--------+--------+-----------+--------+--------+--------+
+| Scenario | Success | Errors | Avg ms | Median ms | Min ms | P95 ms | Max ms |
++--------------------+---------+--------+--------+-----------+--------+--------+--------+
+| Category + price | 30 | 0 | 187.76 | 186.39 | 169 | 221.12 | 235.09 |
+| Available products | 30 | 0 | 726.2 | 717.29 | 624.3 | 861.67 | 912.85 |
+| Price range | 30 | 0 | 108.68 | 105.41 | 93.77 | 133.11 | 133.94 |
+| Combined filters | 30 | 0 | 181.4 | 176.12 | 161.91 | 207.96 | 212.41 |
++--------------------+---------+--------+--------+-----------+--------+--------+--------+
+
+problem now is Available products
+
+after adding the remaining indexes :
+final result :
+
++--------------------+---------+--------+--------+-----------+--------+--------+--------+
+| Scenario | Success | Errors | Avg ms | Median ms | Min ms | P95 ms | Max ms |
++--------------------+---------+--------+--------+-----------+--------+--------+--------+
+| Category + price | 30 | 0 | 137.02 | 137.8 | 114.03 | 166.71 | 173.52 |
+| Available products | 30 | 0 | 109.11 | 107.39 | 85.6 | 141.03 | 164.75 |
+| Price range | 30 | 0 | 105.55 | 99.83 | 79.64 | 146.53 | 153.17 |
+| Combined filters | 30 | 0 | 130.44 | 131.23 | 109.32 | 155.46 | 159.35 |
++--------------------+---------+--------+--------+-----------+--------+--------+--------+
