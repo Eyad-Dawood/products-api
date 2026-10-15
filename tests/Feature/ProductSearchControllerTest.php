@@ -5,10 +5,6 @@ use App\Http\Requests\ProductSearchRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Carbon;
-use Illuminate\Foundation\Testing\DatabaseTruncation;
-
-uses(DatabaseTruncation::class);
-
 function searchProducts(array $query = []): array
 {
     $request = ProductSearchRequest::create(
