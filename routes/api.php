@@ -1,7 +1,7 @@
 <?php
 use App\Http\Controllers\Api\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductSearchController;
+use App\Http\Controllers\Api\Product\ProductSearchController;
 use App\Enums\UserRole;
 
 Route::prefix('auth')->group(function () {

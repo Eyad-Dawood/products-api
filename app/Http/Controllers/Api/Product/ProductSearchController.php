@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\Product;
 
 use App\Models\Product;
-use Illuminate\Http\Request;
 use App\Http\Requests\ProductSearchRequest;
 use App\Http\Resources\ProductResource;
 use Illuminate\Support\Facades\Cache;
-
+use App\Http\Controllers\Controller;
 
 class ProductSearchController extends Controller
 {
@@ -65,11 +64,11 @@ class ProductSearchController extends Controller
 
         $query->
         orderBy($sortBy,$sortDir)
-        ->orderBy('id','asc'); // fall back when values are equal
+        ->orderBy('id','desc'); // fall back when values are equal
 
 
         //pagination
-        $perPage = $request->query('per_page',10);
+        $perPage = (int) $request->query('per_page',10);
 
         $paginator = $query->simplePaginate($perPage);
 

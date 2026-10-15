@@ -30,7 +30,8 @@ class ProductSearchRequest extends FormRequest
             'is_available' => ['nullable', 'boolean'],
             'sort_by' => ['nullable', 'in:price,created_at'],
             'sort_dir' => ['nullable', 'in:asc,desc'],
-            'per_page' => ['nullable', 'integer', 'min:1', 'max:50']
+            'per_page' => ['nullable', 'integer', 'min:1', 'max:50'],
+            'page' => ['nullable', 'integer', 'min:1'],
         ];
     }
 

@@ -21,7 +21,7 @@ class CheckUserRole
         $user = auth('api')->user();
 
         $roleArray = explode('|', $roles);
-
+        
         if (!$user || !in_array($user->role, $roleArray)) {
             return response()->json([
                 'message' => 'Unauthorized. Insufficient permissions.'
