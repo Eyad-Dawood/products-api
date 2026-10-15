@@ -63,7 +63,7 @@ class ProductSearchController extends Controller
 
         //pagination
         $perPage = $request->query('per_page',10);
-        $products = $query->paginate($perPage);
+        $products = $query->simplePaginate($perPage);
 
         return ProductResource::collection($products);
     }

@@ -2,6 +2,16 @@ phpadmin must be running when using aritsan:test becuase it uses mysql to use fu
 
 no rate limiting so performance tests could be run with no issues
 
+this project has jwt authentication and special authorization middelware 
+default user :  
+
+email=admin@admin.com
+password=password
+
+press here to download postman collection for testing (optional)
+
+
+
 steps :
 1 open XAMPP open Mysql , Apache
 2- php artisan migrate:fresh --seed (takes time)
@@ -96,3 +106,15 @@ final result :
 | Price range | 30 | 0 | 105.55 | 99.83 | 79.64 | 146.53 | 153.17 |
 | Combined filters | 30 | 0 | 130.44 | 131.23 | 109.32 | 155.46 | 159.35 |
 +--------------------+---------+--------+--------+-----------+--------+--------+--------+
+
+
+after using simple pagination : 
++--------------------+---------+--------+--------+-----------+--------+--------+--------+
+| Scenario           | Success | Errors | Avg ms | Median ms | Min ms | P95 ms | Max ms |
++--------------------+---------+--------+--------+-----------+--------+--------+--------+
+| Category + price   | 200     | 0      | 104.41 | 99.6      | 78.57  | 130.13 | 204.47 |
+| Available products | 200     | 0      | 104.82 | 99.19     | 78.9   | 138.04 | 218.37 |
+| Price range        | 200     | 0      | 114.95 | 105.48    | 72.72  | 191.09 | 350.18 |
+| Combined filters   | 200     | 0      | 125.25 | 112.56    | 69.31  | 206.67 | 403.01 |
++--------------------+---------+--------+--------+-----------+--------+--------+--------+
+
