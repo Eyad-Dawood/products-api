@@ -6,7 +6,7 @@ then PostmanCollectionLink and a note (optional)
 with clear font (project has inline command to test performance instade of doing it mannualy , in instruction section 
 
 then add those numbers to hook the reader
-
+also point out that application has 2 roles admin and customer
 
 No rate limmiting for an easy test 
 
