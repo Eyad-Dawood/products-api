@@ -52,7 +52,7 @@ git clone https://github.com/Eyad-Dawood/products-api
 cd products-api
 
 # 2. Install PHP dependencies
-composer install
+composer install --ignore-platform-req=ext-sodium
 
 # 3. Copy environment file and generate app key
 copy .env.example .env
