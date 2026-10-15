@@ -48,7 +48,7 @@ A **Laravel 13** based backend service that provides powerful product search cap
 
 ```bash
 # 1. Clone the repository
-git clone <https://github.com/Eyad-Dawood/products-api>
+git clone https://github.com/Eyad-Dawood/products-api
 cd products-api
 
 # 2. Install PHP dependencies
